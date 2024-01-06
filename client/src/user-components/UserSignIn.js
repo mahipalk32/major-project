@@ -19,6 +19,7 @@ function UserSignIn() {
   const [loginError, setLoginError] = useState(false);
   const navigate = useNavigate();
   const handleUserRegister = () => {
+    localStorage.setItem("userSignIn", false);
     navigate("/user-registration");
   };
 
@@ -31,7 +32,7 @@ function UserSignIn() {
       .then((result) => {
         // console.log(result);
         if (result.data.status === "Success") {
-          navigate("/home");
+          navigate("/");
           localStorage.setItem("userSignIn", true);
           localStorage.setItem("userEmail", email);
           localStorage.setItem("firstname", result.data.firstname);
@@ -112,6 +113,7 @@ function UserSignIn() {
                 )}
                 <Button
                   type="submit"
+                  color="inherit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -126,7 +128,7 @@ function UserSignIn() {
                 >
                   <Grid item>
                     New User?
-                    <Button variant="outlined" onClick={handleUserRegister}>
+                    <Button variant="outlined" color="inherit" onClick={handleUserRegister}>
                       Register
                     </Button>
                   </Grid>

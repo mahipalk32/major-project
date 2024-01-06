@@ -68,9 +68,12 @@ const HomeContent = React.forwardRef((props, ref) => {
 });
 
 function MultiActionAreaCard() {
+  const isUserLoggedin = localStorage.getItem("userSignIn");
   const navigate = useNavigate();
   const handleStudent = () => {
-    navigate("/student/high-school");
+    if(isUserLoggedin === true) {
+      navigate("/student/high-school");
+    }
   };
   return (
     <Card sx={{ maxWidth: 345, height: 300 }}>
@@ -97,9 +100,12 @@ function MultiActionAreaCard() {
 }
 
 function MultiActionAreaCard1() {
+  const isUserLoggedin = localStorage.getItem("userSignIn");
   const navigate = useNavigate();
   const handleOther = () => {
-    navigate("/other/apply");
+    if(isUserLoggedin === true) {
+      navigate("/other/apply");
+    }
   };
   return (
     <Card sx={{ maxWidth: 345, height: 300 }}>

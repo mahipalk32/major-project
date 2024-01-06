@@ -15,6 +15,7 @@ import {
   TableBody,
   Paper,
 } from "@mui/material";
+// import MandalAutoComplete from "../details/DistrictAutoComplete";
 import "../style.css";
 
 export default function StudentDetails({ filename }) {
@@ -83,7 +84,7 @@ export default function StudentDetails({ filename }) {
     formData.append("file", file);
 
     axios
-      .post("http://localhost:8080/uploadPhoto", formData, {email})
+      .post("http://localhost:8080/uploadPhoto", formData, { email })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
 
@@ -152,50 +153,52 @@ export default function StudentDetails({ filename }) {
   const handleNextPreview = () => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("email", email)
+    formData.append("email", email);
 
     axios
       .post("http://localhost:8080/uploadPhoto", formData)
-      .then((res) =>{
-         console.log(res)
-         setImageUrl(res.data)
-         console.log(res.data.image)
-         console.log("Image ", imageUrl)
+      .then((res) => {
+        console.log(res);
+        setImageUrl(res.data);
+        console.log(res.data.image);
+        console.log("Image ", imageUrl);
       })
       .catch((err) => console.log(err));
 
-    // if (sscBoard.length <= 0) {
-    //   alert("SSC Board Type is required");
-    // } else if (sscType.length <= 0) {
-    //   alert("SSC Type is required");
-    // } else if (sscPassYear.length <= 0) {
-    //   alert("SSC Pass Year is required");
-    // } else if (sscHallTicket.length <= 0) {
-    //   alert("SSC Hall Ticket is required");
-    // } else if (dob.length <= 0) {
-    //   alert("Date of Birth is required");
-    // } else if (name.length <= 0) {
-    //   alert("Name is required");
-    // } else if (fatherName.length <= 0) {
-    //   alert("Father name is required");
-    // } else if (gender.length <= 0) {
-    //   alert("Gender is required");
-    // } else if (mobileNo.length <= 0) {
-    //   alert("Mobile number is required");
-    // } else if (districtInstitution.length <= 0) {
-    //   alert("Institution District is required");
-    // } else if (mandalInstitution.length <= 0) {
-    //   alert("Institution Mandal is required");
-    // } else if (institutionname.length <= 0) {
-    //   alert("Institution Name is required");
-    // } else if (coursename.length <= 0) {
-    //   alert("Course name is required");
-    // } else if (admissionnumber.length <= 0) {
-    //   alert("Admission Number is required");
-    // } else {
-    setReview(true);
-    // }
+    if (sscBoard.length <= 0) {
+      alert("SSC Board Type is required");
+    } else if (sscType.length <= 0) {
+      alert("SSC Type is required");
+    } else if (sscPassYear.length <= 0) {
+      alert("SSC Pass Year is required");
+    } else if (sscHallTicket.length <= 0) {
+      alert("SSC Hall Ticket is required");
+    } else if (dob.length <= 0) {
+      alert("Date of Birth is required");
+    } else if (name.length <= 0) {
+      alert("Name is required");
+    } else if (fatherName.length <= 0) {
+      alert("Father name is required");
+    } else if (gender.length <= 0) {
+      alert("Gender is required");
+    } else if (mobileNo.length <= 0) {
+      alert("Mobile number is required");
+    } else if (districtInstitution.length <= 0) {
+      alert("Institution District is required");
+    } else if (mandalInstitution.length <= 0) {
+      alert("Institution Mandal is required");
+    } else if (institutionname.length <= 0) {
+      alert("Institution Name is required");
+    } else if (coursename.length <= 0) {
+      alert("Course name is required");
+    } else if (admissionnumber.length <= 0) {
+      alert("Admission Number is required");
+    } else {
+      setReview(true);
+    }
   };
+
+  console.log("I am Mandal", mandal);
 
   return (
     <div className="student-details-div">
@@ -226,9 +229,12 @@ export default function StudentDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setSSCBoard(e.target.value)}
                 >
-                  <MenuItem value="oprion1">oprion1</MenuItem>
-                  <MenuItem value="oprion2">oprion2</MenuItem>
-                  <MenuItem value="oprion3">oprion3</MenuItem>
+                  <MenuItem value="oprion1">SSC</MenuItem>
+                  <MenuItem value="oprion2">CBSE</MenuItem>
+                  <MenuItem value="oprion3">ICSE</MenuItem>
+                  <MenuItem value="oprion3">ORIENTAL</MenuItem>
+                  <MenuItem value="oprion3">APOS</MenuItem>
+                  <MenuItem value="oprion3">Other Board</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -300,10 +306,9 @@ export default function StudentDetails({ filename }) {
             }}
           >
             <spam>Student Details</spam>
-            
           </Typography>
           <div className="sub-divs">
-          {/* <img src="http://localhost:8080/uploads/undefined_1703529902891.jpg" alt="images"/> */}
+            {/* <img src="http://localhost:8080/uploads/undefined_1703529902891.jpg" alt="images"/> */}
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -359,7 +364,7 @@ export default function StudentDetails({ filename }) {
                   {/* <MenuItem value="">SSC Board Type</MenuItem> */}
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Female">Other</MenuItem>
+                  <MenuItem value="other">Other</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -452,11 +457,48 @@ export default function StudentDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setDistrict(e.target.value)}
                 >
-                  {/* <MenuItem value="">SSC Board Type</MenuItem> */}
-                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Adilabad">Adilabad</MenuItem>
+                  <MenuItem value="BhadradriKothagudem">
+                    Bhadradri Kothagudem
+                  </MenuItem>
                   <MenuItem value="Hyderabad">Hyderabad</MenuItem>
+                  <MenuItem value="Jagtial">Jagtial</MenuItem>
+                  <MenuItem value="Jayashankar">Jayashankar</MenuItem>
+                  <MenuItem value="JogulambaGadwal">Jogulamba Gadwal</MenuItem>
+                  <MenuItem value="Kamareddy">Kamareddy</MenuItem>
+                  <MenuItem value="Karimnagar">Karimnagar</MenuItem>
+                  <MenuItem value="Khammam">Khammam</MenuItem>
+                  <MenuItem value="Kumuram Bheem">Kumuram Bheem</MenuItem>
+                  <MenuItem value="Mahabubabad">Mahabubabad</MenuItem>
+                  <MenuItem value="Mahabubnagar">Mahabubnagar</MenuItem>
+                  <MenuItem value="Mancherial">Mancherial</MenuItem>
+                  <MenuItem value="Medak">Medak</MenuItem>
+                  <MenuItem value="MedchalMalkajgiri">
+                    Medchal-Malkajgiri
+                  </MenuItem>
+                  <MenuItem value="Mulugu">Mulugu</MenuItem>
+                  <MenuItem value="Nagarkurnool">Nagarkurnool</MenuItem>
+                  <MenuItem value="Nalgonda">Nalgonda</MenuItem>
+                  <MenuItem value="Narayanpet">Narayanpet</MenuItem>
                   <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Nizamabad">Nizamabad</MenuItem>
+                  <MenuItem value="Peddapalli">Peddapalli</MenuItem>
+                  <MenuItem value="RajannaSiricilla">
+                    Rajanna Siricilla
+                  </MenuItem>
+                  <MenuItem value="Rangareddy">Rangareddy</MenuItem>
+                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Siddipet">Siddipet</MenuItem>
+                  <MenuItem value="Suryapet">Suryapet</MenuItem>
+                  <MenuItem value="Vikarabad">Vikarabad</MenuItem>
+                  <MenuItem value="Wanaparthy">Wanaparthy</MenuItem>
+                  <MenuItem value="Warangal Urban">Warangal Urban</MenuItem>
+                  <MenuItem value="WarangalRural">Warangal Rural</MenuItem>
+                  <MenuItem value="YadadriBhuvanagiri">
+                    Yadadri Bhuvanagiri
+                  </MenuItem>
                 </TextField>
+                {/* <MandalAutoComplete /> */}
               </Grid>
 
               <Grid item xs={12} sm={6}>
@@ -471,10 +513,13 @@ export default function StudentDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setMandal(e.target.value)}
                 >
-                  {/* <MenuItem value="">SSC Board Type</MenuItem> */}
-                  <MenuItem value="Nrayankhed">Nrayankhed</MenuItem>
-                  <MenuItem value="Hyderabad">Hyderabad</MenuItem>
-                  <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Kalher">Kalher</MenuItem>
+                  <MenuItem value="Kangti">Kangti</MenuItem>
+                  <MenuItem value="Manoor">Manoor</MenuItem>
+                  <MenuItem value="Nagilgidda">Nagilgidda</MenuItem>
+                  <MenuItem value="Narayankhed">Narayankhed</MenuItem>
+                  <MenuItem value="Sirgapoor">Sirgapoor</MenuItem>
+                  <MenuItem value="Tadkal">Tadkal</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -534,16 +579,53 @@ export default function StudentDetails({ filename }) {
                   required
                   select
                   id="districtInstitution"
-                  name="district"
+                  name="districtInstitution"
                   label="District"
                   fullWidth
                   autoComplete="given-name"
                   variant="outlined"
                   onChange={(e) => setDistrictInstitution(e.target.value)}
                 >
-                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Adilabad">Adilabad</MenuItem>
+                  <MenuItem value="BhadradriKothagudem">
+                    Bhadradri Kothagudem
+                  </MenuItem>
                   <MenuItem value="Hyderabad">Hyderabad</MenuItem>
+                  <MenuItem value="Jagtial">Jagtial</MenuItem>
+                  <MenuItem value="Jayashankar">Jayashankar</MenuItem>
+                  <MenuItem value="JogulambaGadwal">Jogulamba Gadwal</MenuItem>
+                  <MenuItem value="Kamareddy">Kamareddy</MenuItem>
+                  <MenuItem value="Karimnagar">Karimnagar</MenuItem>
+                  <MenuItem value="Khammam">Khammam</MenuItem>
+                  <MenuItem value="Kumuram Bheem">Kumuram Bheem</MenuItem>
+                  <MenuItem value="Mahabubabad">Mahabubabad</MenuItem>
+                  <MenuItem value="Mahabubnagar">Mahabubnagar</MenuItem>
+                  <MenuItem value="Mancherial">Mancherial</MenuItem>
+                  <MenuItem value="Medak">Medak</MenuItem>
+                  <MenuItem value="MedchalMalkajgiri">
+                    Medchal-Malkajgiri
+                  </MenuItem>
+                  <MenuItem value="Mulugu">Mulugu</MenuItem>
+                  <MenuItem value="Nagarkurnool">Nagarkurnool</MenuItem>
+                  <MenuItem value="Nalgonda">Nalgonda</MenuItem>
+                  <MenuItem value="Narayanpet">Narayanpet</MenuItem>
                   <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Nizamabad">Nizamabad</MenuItem>
+                  <MenuItem value="Peddapalli">Peddapalli</MenuItem>
+                  <MenuItem value="RajannaSiricilla">
+                    Rajanna Siricilla
+                  </MenuItem>
+                  <MenuItem value="Rangareddy">Rangareddy</MenuItem>
+                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Siddipet">Siddipet</MenuItem>
+                  <MenuItem value="Suryapet">Suryapet</MenuItem>
+                  <MenuItem value="Vikarabad">Vikarabad</MenuItem>
+                  <MenuItem value="Wanaparthy">Wanaparthy</MenuItem>
+                  <MenuItem value="Warangal Urban">Warangal Urban</MenuItem>
+                  <MenuItem value="WarangalRural">Warangal Rural</MenuItem>
+                  <MenuItem value="YadadriBhuvanagiri">
+                    Yadadri Bhuvanagiri
+                  </MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -551,16 +633,20 @@ export default function StudentDetails({ filename }) {
                   required
                   select
                   id="mandalInstitution"
-                  name="mandal"
+                  name="mandalInstitution"
                   label="Mandal"
                   fullWidth
                   autoComplete="given-name"
                   variant="outlined"
                   onChange={(e) => setMandalInstitution(e.target.value)}
                 >
-                  <MenuItem value="Nrayankhed">Nrayankhed</MenuItem>
-                  <MenuItem value="Hyderabad">Hyderabad</MenuItem>
-                  <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Kalher">Kalher</MenuItem>
+                  <MenuItem value="Kangti">Kangti</MenuItem>
+                  <MenuItem value="Manoor">Manoor</MenuItem>
+                  <MenuItem value="Nagilgidda">Nagilgidda</MenuItem>
+                  <MenuItem value="Narayankhed">Narayankhed</MenuItem>
+                  <MenuItem value="Sirgapoor">Sirgapoor</MenuItem>
+                  <MenuItem value="Tadkal">Tadkal</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -587,9 +673,9 @@ export default function StudentDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setCourseName(e.target.value)}
                 >
-                  <MenuItem value="Course A">Nrayankhed</MenuItem>
-                  <MenuItem value="Course B">Hyderabad</MenuItem>
-                  <MenuItem value="Course C">Nirmal</MenuItem>
+                  <MenuItem value="Primary">Primary</MenuItem>
+                  <MenuItem value="Secondary">Secondary</MenuItem>
+                  <MenuItem value="Intermediate">Intermediate</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -710,7 +796,7 @@ export default function StudentDetails({ filename }) {
                     fontSize: "20px",
                   }}
                 >
-                   Residential Address Details
+                  Residential Address Details
                 </Typography>
                 <Table>
                   <TableHead style={{ backgroundColor: "#f2f2f2" }}>
@@ -760,7 +846,7 @@ export default function StudentDetails({ filename }) {
                     fontSize: "20px",
                   }}
                 >
-                Student Details
+                  Student Details
                 </Typography>
                 <Table>
                   <TableHead style={{ backgroundColor: "#f2f2f2" }}>
@@ -865,10 +951,19 @@ export default function StudentDetails({ filename }) {
           </div>
           <div style={{ margin: "auto" }}>
             <img src={`http://localhost:8080/${imageUrl}`} alt="" />
-            <Button type="text" onClick={handleEdit} variant="outlined" style={{marginRight:"8px"}}>
+            <Button
+              type="text"
+              onClick={handleEdit}
+              variant="outlined"
+              style={{ marginRight: "8px" }}
+            >
               Edit
             </Button>
-            <Button type="text" onClick={handleStudentDetailsNext} variant="outlined">
+            <Button
+              type="text"
+              onClick={handleStudentDetailsNext}
+              variant="outlined"
+            >
               NEXT
             </Button>
           </div>

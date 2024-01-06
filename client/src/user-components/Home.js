@@ -224,7 +224,7 @@ export default function Home() {
         style={{ backgroundColor: "#231F20" }}
       >
         <Toolbar>
-          {isUserLoggedin && (
+          {isUserLoggedin && !isAdminLoggedin && (
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -240,7 +240,7 @@ export default function Home() {
           )}
           {!titleHandle && (
             <Typography variant="h6" noWrap component="div">
-              My-Project
+              busPass
             </Typography>
           )}
           {!isUserLoggedin && !isAdminLoggedin && (
@@ -280,7 +280,7 @@ export default function Home() {
               Guide
             </Button>
           </div> */}
-          {isUserLoggedin && (
+          {isUserLoggedin && !isAdminLoggedin && (
             <div style={divStyleAvatar}>
               <Avatar
                 {...stringAvatar(`${firstname} ${lastname}`)}
@@ -292,7 +292,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
 
-      {isUserLoggedin && (
+      {isUserLoggedin && !isAdminLoggedin && (
         <Drawer variant="permanent" open={open}>
           <DrawerHeader
             style={{ backgroundColor: "#231F20", color: "#F2F2F2" }}
@@ -379,7 +379,7 @@ export default function Home() {
                 <ListItemIcon>
                   <WalletIcon />
                 </ListItemIcon>
-                <ListItemText>wallet: {wallet}</ListItemText>
+                <ListItemText>Wallet: <strong>{wallet}</strong></ListItemText>
                 {openSubsection2 ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               </ListItemButton>
             </ListItem>
@@ -400,7 +400,7 @@ export default function Home() {
                 <ListItemIcon>
                   <LogoutIcon />
                 </ListItemIcon>
-                <ListItemText onClick={handleLogout}>logout</ListItemText>
+                <ListItemText style={{color:"red"}} onClick={handleLogout}>logout</ListItemText>
               </ListItemButton>
             </ListItem>
           </List>
@@ -409,7 +409,7 @@ export default function Home() {
       <Box component="main" sx={{ flexGrow: 1, p: 0, height: "100vh" }}>
         <DrawerHeader />
         <Routes>
-          <Route path="/home" element={<HomeContent ref={childRef} />}></Route>
+          <Route path="/" element={<HomeContent ref={childRef} />}></Route>
           <Route path="/view-pass" element={<ViewPass />}></Route>
           <Route path="/send-mail" element={<EmailSend />}></Route>
           <Route path="/renewal" element={<ViewPass />}></Route>

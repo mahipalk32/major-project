@@ -47,13 +47,13 @@ export default function OtherUserDetails({ filename }) {
 
   const handleStudentDetailsNext = () => {
     navigate("/student/high-school/payment");
-    // const formData = new FormData();
-    // formData.append("file", file);
+    const formData = new FormData();
+    formData.append("file", file);
 
-    // axios
-    //   .post("http://localhost:8080/uploadPhoto", formData, {email})
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
+    axios
+      .post("http://localhost:8080/uploadPhoto", formData, { email })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
 
     axios
       .post("http://localhost:8080/user_apply_personal_details", {
@@ -94,19 +94,19 @@ export default function OtherUserDetails({ filename }) {
   };
 
   const handleNextPreview = () => {
-    // if (dob.length <= 0) {
-    //   alert("Date of Birth is required");
-    // } else if (name.length <= 0) {
-    //   alert("Name is required");
-    // } else if (fatherName.length <= 0) {
-    //   alert("Father name is required");
-    // } else if (gender.length <= 0) {
-    //   alert("Gender is required");
-    // } else if (mobileNo.length <= 0) {
-    //   alert("Mobile number is required");
-    // } else {
+    if (dob.length <= 0) {
+      alert("Date of Birth is required");
+    } else if (name.length <= 0) {
+      alert("Name is required");
+    } else if (fatherName.length <= 0) {
+      alert("Father name is required");
+    } else if (gender.length <= 0) {
+      alert("Gender is required");
+    } else if (mobileNo.length <= 0) {
+      alert("Mobile number is required");
+    } else {
       setReview(true);
-    // }
+    }
   };
 
   return (
@@ -273,9 +273,46 @@ export default function OtherUserDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setDistrict(e.target.value)}
                 >
-                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Adilabad">Adilabad</MenuItem>
+                  <MenuItem value="BhadradriKothagudem">
+                    Bhadradri Kothagudem
+                  </MenuItem>
                   <MenuItem value="Hyderabad">Hyderabad</MenuItem>
+                  <MenuItem value="Jagtial">Jagtial</MenuItem>
+                  <MenuItem value="Jayashankar">Jayashankar</MenuItem>
+                  <MenuItem value="JogulambaGadwal">Jogulamba Gadwal</MenuItem>
+                  <MenuItem value="Kamareddy">Kamareddy</MenuItem>
+                  <MenuItem value="Karimnagar">Karimnagar</MenuItem>
+                  <MenuItem value="Khammam">Khammam</MenuItem>
+                  <MenuItem value="Kumuram Bheem">Kumuram Bheem</MenuItem>
+                  <MenuItem value="Mahabubabad">Mahabubabad</MenuItem>
+                  <MenuItem value="Mahabubnagar">Mahabubnagar</MenuItem>
+                  <MenuItem value="Mancherial">Mancherial</MenuItem>
+                  <MenuItem value="Medak">Medak</MenuItem>
+                  <MenuItem value="MedchalMalkajgiri">
+                    Medchal-Malkajgiri
+                  </MenuItem>
+                  <MenuItem value="Mulugu">Mulugu</MenuItem>
+                  <MenuItem value="Nagarkurnool">Nagarkurnool</MenuItem>
+                  <MenuItem value="Nalgonda">Nalgonda</MenuItem>
+                  <MenuItem value="Narayanpet">Narayanpet</MenuItem>
                   <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Nizamabad">Nizamabad</MenuItem>
+                  <MenuItem value="Peddapalli">Peddapalli</MenuItem>
+                  <MenuItem value="RajannaSiricilla">
+                    Rajanna Siricilla
+                  </MenuItem>
+                  <MenuItem value="Rangareddy">Rangareddy</MenuItem>
+                  <MenuItem value="Sangareddy">Sangareddy</MenuItem>
+                  <MenuItem value="Siddipet">Siddipet</MenuItem>
+                  <MenuItem value="Suryapet">Suryapet</MenuItem>
+                  <MenuItem value="Vikarabad">Vikarabad</MenuItem>
+                  <MenuItem value="Wanaparthy">Wanaparthy</MenuItem>
+                  <MenuItem value="Warangal Urban">Warangal Urban</MenuItem>
+                  <MenuItem value="WarangalRural">Warangal Rural</MenuItem>
+                  <MenuItem value="YadadriBhuvanagiri">
+                    Yadadri Bhuvanagiri
+                  </MenuItem>
                 </TextField>
               </Grid>
 
@@ -291,10 +328,13 @@ export default function OtherUserDetails({ filename }) {
                   variant="outlined"
                   onChange={(e) => setMandal(e.target.value)}
                 >
-                  {/* <MenuItem value="">SSC Board Type</MenuItem> */}
-                  <MenuItem value="Nrayankhed">Nrayankhed</MenuItem>
-                  <MenuItem value="Hyderabad">Hyderabad</MenuItem>
-                  <MenuItem value="Nirmal">Nirmal</MenuItem>
+                  <MenuItem value="Kalher">Kalher</MenuItem>
+                  <MenuItem value="Kangti">Kangti</MenuItem>
+                  <MenuItem value="Manoor">Manoor</MenuItem>
+                  <MenuItem value="Nagilgidda">Nagilgidda</MenuItem>
+                  <MenuItem value="Narayankhed">Narayankhed</MenuItem>
+                  <MenuItem value="Sirgapoor">Sirgapoor</MenuItem>
+                  <MenuItem value="Tadkal">Tadkal</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -369,8 +409,8 @@ export default function OtherUserDetails({ filename }) {
             <spam>APPLICATION</spam>
           </Typography>
           <div style={{ display: "flex", flex: 1, margin: "20px" }}>
-            <div style={{ flex: 1, margin:"20px" }}>
-            <TableContainer component={Paper}>
+            <div style={{ flex: 1, margin: "20px" }}>
+              <TableContainer component={Paper}>
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -379,7 +419,7 @@ export default function OtherUserDetails({ filename }) {
                     fontSize: "20px",
                   }}
                 >
-                Student Details
+                  Student Details
                 </Typography>
                 <Table>
                   <TableHead style={{ backgroundColor: "#f2f2f2" }}>
@@ -430,7 +470,7 @@ export default function OtherUserDetails({ filename }) {
               </TableContainer>
             </div>
             <div style={{ flex: 1, margin: "20px" }}>
-            <TableContainer component={Paper}>
+              <TableContainer component={Paper}>
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -439,7 +479,7 @@ export default function OtherUserDetails({ filename }) {
                     fontSize: "20px",
                   }}
                 >
-                   Residential Address Details
+                  Residential Address Details
                 </Typography>
                 <Table>
                   <TableHead style={{ backgroundColor: "#f2f2f2" }}>
@@ -479,10 +519,19 @@ export default function OtherUserDetails({ filename }) {
             </div>
           </div>
           <div style={{ margin: "auto" }}>
-            <Button type="text" onClick={handleEdit} style={{marginRight:"8px"}} variant="outlined">
+            <Button
+              type="text"
+              onClick={handleEdit}
+              style={{ marginRight: "8px" }}
+              variant="outlined"
+            >
               Edit
             </Button>
-            <Button type="text" onClick={handleStudentDetailsNext} variant="outlined">
+            <Button
+              type="text"
+              onClick={handleStudentDetailsNext}
+              variant="outlined"
+            >
               NEXT
             </Button>
           </div>

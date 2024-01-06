@@ -134,18 +134,6 @@ const upload = multer({
 app.post("/uploadPhoto", upload, async (req, res) => {
   console.log(req.file);
   console.log(req.file.email);
-  // try {
-  //   const photo = new PhotoModel({
-  //     image: req.file.originalname,
-  //     filename: req.file.filename,
-  //   });
-
-  //   await photo.save();
-  //   res.status(201).send(req.file.originalname);
-  // } catch (error) {
-  //   console.error(error);
-  //   res.status(500).send('Internal Server Error');
-  // }
   PhotoModel.create({email:req.file.email, image: req.file.filename})
   .then((result) => res.json(result))
   .catch((err) => res.json(err))
@@ -224,9 +212,11 @@ app.get("/application_mails", (req, res) => {
   .catch((err) => res.json(err));
 })
 
-app.get("/", (req, res) => {
-  console.log("Hii")
-})
+// app.get("/user-apply-personal-details", (req, res) => {
+//   StudentPersonalDetailsModel.findOne()
+//     .then((result) => res.json(result))
+//     .catch((err) => res.json(err));
+// });
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
