@@ -132,17 +132,16 @@ const upload = multer({
 }).single('file');
 
 app.post("/uploadPhoto", upload, async (req, res) => {
-  console.log(req.file);
-  console.log(req.file.email);
-  PhotoModel.create({email:req.file.email, image: req.file.filename})
+  PhotoModel.create({email:req.body.email, image: req.file.filename})
   .then((result) => res.json(result))
   .catch((err) => res.json(err))
 })
 
-app.get('/getImage', (req, res) => {
-  PhotoModel.find()
-  .then(result => res.json(result))
-  .catch(err => res.json(res))
+app.get('/getImage/:email', (req, res) => {
+  const email = req.params.email;
+  PhotoModel.findOne({email: email})
+  .then((result) => res.json({imageurl : result.image}))
+  .catch(err => res.json(res)) 
 })
 
 // STUDENT APPLICATION //

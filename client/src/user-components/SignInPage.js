@@ -17,7 +17,7 @@ function SignInPage() {
   }
 
   return (
-    <div style={{margin:"80px 200px", backgroundColor:"#fff", padding:"30px"}}>
+    <div style={{margin:"80px 300px", backgroundColor:"#fff", padding:"30px"}}>
         <Typography style={{marginTop:"20px", fontSize:"3rem"}} variant="h5">LOGIN</Typography>
         <Button style={{margin:"30px"}} color="inherit" variant='contained' onClick={handleUserSignIn}>user SignIn</Button> <br/>
         <Button style={{margin:"30px"}} color="inherit" variant='contained' onClick={handleAdminSignIn}>admin SignIn</Button>

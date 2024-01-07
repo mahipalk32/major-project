@@ -7,7 +7,7 @@ import "../style.css";
 const PaymentSuccessPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/home");
+    navigate("/");
   };
   return (
     <div className="payment-success-page">

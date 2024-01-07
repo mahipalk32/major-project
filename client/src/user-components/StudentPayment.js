@@ -61,6 +61,13 @@ export default function StudentPayment() {
       )
       .catch((err) => console.log(err));
 
+      axios
+      .post("http://localhost:8080/applicaiton_emails", {
+        email, fromplace, toplace, months
+      })
+      .then((res) => {})
+      .catch((err) => console.log(err));
+
     if (passType === "year") {
       setMonths(12);
       setTotalAmount(routeAmount * months);
